@@ -56,7 +56,9 @@ function nav(path){
             html += `<i class="mdui-icon material-icons mdui-icon-dark folder" style="margin:0;">chevron_right</i><a class="folder" href="${p}">${n}</a>`;
         }
     }
-    $('#nav').html(html);
+    $('#nav').html(html += `<button class="btn" data-clipboard-text="Just because you can doesn't mean you should — clipboard.js">
+    Copy to clipboard
+</button>`);
 }
 
 // 渲染文件列表
@@ -419,6 +421,20 @@ $(function(){
         render(url);
         return false;
     });
+
+// 获取文件列表
+function getlinks() {
+	let la = $x("//a")
+	let str = "";
+	for (let i =0;i<la.length;i++){
+		console.log(la[i].href)
+		str += la[i].href + '\n';
+	}
+	return str;
+}
+
+
+
 
     $("body").on("click",'.view',function(){
         var url = $(this).attr('href');
